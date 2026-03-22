@@ -1,1 +1,29 @@
+Baseline Fleet Demand: Linear Regression Analysis
 
+Project Scope: 2027 Machine Inflow & Install Base Workload Projection
+
+Model Type: Ordinary Least Squares (OLS) Linear Regression
+
+Objective: Establish a statistical "floor" for 2027 demand to compare against advanced ML models.
+
+Methodology: The "Trend-Line" Approach
+While complex models (like Random Forests) capture "spikes" and "dips," this Baseline model identifies the long-term trajectory of the fleet.
+
+Feature Engineering: We converted categorical quarters (e.g., 2023Q4) into a continuous TIME_INDEX (e.g., 2024.0). This allows the model to calculate a mathematical slope (
+) for the fleet's growth.
+
+Target Variable (USAGE_PROXY): We utilized the historical Install Base/Fleet counts to represent the "Active Workload" that requires service support.
+
+Model Validation (Train/Test Split)
+To ensure the model isn't just "memorizing" the past, we implemented a Chronological Split:Training Set (80%): Historical data used to teach the model the growth rate.Test Set (20%): The most recent "unseen" quarters used to grade the model's accuracy.
+
+Key Metric: The True Test MAPE (Mean Absolute Percentage Error) represents the average "miss" the model had when predicting the most recent historical quarters.
+
+2027 Strategic Projections
+The model projects four quarters into the future (2027 Q1 - Q4).
+
+New Machine Demand: Forecasts the volume of new units entering the field.
+
+Total Usage: Forecasts the total "Workload" (New + Existing) that the service department must be prepared to support.
+
+.
